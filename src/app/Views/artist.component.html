@@ -1,0 +1,38 @@
+<div class="artist">
+    <!-- <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
+        <ng-md-icon icon="add"></ng-md-icon>
+    </md-button> -->
+       <md-card>   
+        <md-card-content>
+             <!-- layout-padding layout-wrap -->
+             <div class="flex-container" fxLayout.xs="column" fx-layout="row" >
+                <h2>Artists</h2>
+                 <md-input-container class="md-block" class="flex-item"> 
+                    <label>First Name</label> 
+                    <input mdInput ng-model="artistSearch.firstName">  
+                </md-input-container>
+                 <md-input-container class="md-block" class="flex-item">
+                    <label>Last Name</label>
+                    <input mdInput ng-model="artistSearch.lastName">
+                </md-input-container>  
+                 <md-input-container class="md-block" class="flex-item">
+                    <label>Country</label>
+                    <input mdInput ng-model="artistSearch.country">
+                </md-input-container>  
+                <button md-button (click)="searchArtist(artistSearch)">Search</button>
+            </div> 
+            <md-divider></md-divider>
+              <!-- <md-list ng-cloak class="artistList" *ngIf="showTable" >   -->
+                <!-- <md-list class="artistList" *ngIf="showTable"> -->
+                    <!-- class="noright" aria-hidden="false" -->
+                    <!-- <md-list-item ng-repeat="artist in artists">  -->
+                        <!-- <p>{{ artist.firstName }}&nbsp;{{ artist.lastName }}</p>  -->
+                <!-- <ng-md-icon icon="details" ng-click="details($event,artist)"
+                            class="md-secondary md-hue-3"></ng-md-icon>
+                <ng-md-icon icon="edit" ng-click="editartist($event,artist)" class="md-secondary md-hue-3"></ng-md-icon>
+                <ng-md-icon icon="delete" ng-click="deleteartist($event,artist)" class="md-secondary"></ng-md-icon> -->
+                    <!-- </md-list-item> -->
+                 <!-- </md-list>   -->
+          </md-card-content> 
+       </md-card>   
+</div>
