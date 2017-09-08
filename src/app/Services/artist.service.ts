@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
 import { Artist } from './../Modules/artist';
 import { ARTISTS } from './../Mocks/mock-artists';
@@ -9,7 +9,12 @@ export class ArtistService{
         return Promise.resolve(ARTISTS);
     }
 
-    // getArtist(userName: string): User {
+    getArtistsWithPlays(): Promise<Artist[]>{
+        return Promise.resolve(ARTISTS);
+    }
+
+    
+    // getArtist(artist: Artist): Artist {
     //  return this.getUsers().find(user => user.userName === userName);
     // }
 }

@@ -1,6 +1,6 @@
 import { Artist } from './../Modules/artist';
 
 export const ARTISTS: Artist[] = [
-  { firstName: 'Shlomo', lastName: 'Artzi', country: 'Israel' },
-  { firstName: 'Britney', lastName: 'Spears', country: 'Mississippi' },
+  { id: 1, firstName: 'Shlomo', lastName: 'Artzi', country: 'Israel', plays: 2 },
+  { id: 2, firstName: 'Britney', lastName: 'Spears', country: 'Mississippi' },
 ];

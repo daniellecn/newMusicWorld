@@ -1,51 +1,56 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 
 import { Artist } from './../Modules/artist';
 import { ArtistService } from './../Services/artist.service'
+import { ArtistDetailComponent } from './../Components/artistDetail.component';
 
 @Component({
   selector: 'artist',
   templateUrl: './../Views/artist.component.html',
 //   styleUrls: ['./CSS/login.component.css'],
 })
+
 export class ArtistComponent implements OnInit { 
-    artistsTable: Artist[] = [];
+    // artists: Artist[];
+    artists: Array<Artist>;
     showTable: boolean = false;
+    selectedArtist: Artist;
     @Input() artistSearch: Artist;
     
-    constructor(private artistService: ArtistService) { 
+    constructor(private artistService: ArtistService,
+                private router: Router,
+                public dialog: MdDialog) { 
         this.artistSearch = new Artist();
-        this.artistsTable = [];
-        alert('constructor ' && this.artistsTable);
-        // alert(this.artistsTable.length);
-        // this.artistSearch.firstName = 'Danielle';
-        // alert(this.artistSearch.firstName);
-        // this.artistsTable.push(this.artistSearch);
-        // alert(this.artistsTable.length);
+        // this.artists = [];
+        this.artists = new Array<Artist>();
     }
 
     getArtist(): void {
-        // this.artistService.getArtists().then(function(artists: Artist[]){
-        //     alert(this);
-        //     // this.artists = artists;
-        //     // alert(this.artists.length);
-        // });
-        // alert(this.artistsTable);
-        // this.artistService.getArtists().then(heroes => alert(this.artistsTable));
+        this.artistService.getArtists().then(function(artists: Artist[]){
+            this.artists = artists;
+        }.bind(this));
     }
 
     ngOnInit(): void{
-        alert('init ' && this.artistsTable);
-        // this.getArtist();
-        // alert(this.artists.length);
-        // for(var i = 0; i <= this.artists.length; i++){
-        //     alert(this.artists[i].firstName);
-        // }
+        this.getArtist();
     }
 
     searchArtist(artistSearch: Artist): Artist[]{
-        // this.showTable = true;
-        return this.artistsTable;
+        this.showTable = true;
+        return this.artists;
+    }
+
+    goToArtistDelete(artist: Artist){
+        //this.artists.
+    }
+
+    goToArtistDetails(){
+        // this.router.navigate(['/detail', this.selectedArtist]);
+        let dialogRef = this.dialog.open(ArtistDetailComponent, {
+        height: '400px',
+        width: '600px',
+        data: { artist: this.selectedArtist }});
     }
 }

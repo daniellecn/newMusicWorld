@@ -9,21 +9,28 @@ import { UserService } from './../Services/user.service'
   templateUrl: './../Views/login.component.html'
 //   styleUrls: ['./CSS/login.component.css'],
 })
-export class LoginComponent { 
+export class LoginComponent implements OnInit{ 
    @Input() user : User;
+   connectedUser : User;
    showLoginError : boolean;
   
-  constructor(private userService: UserService){
+  constructor(private userService: UserService,
+              private router: Router){
       this.showLoginError = false;
   }
 
-  login(user: User): boolean{
+  login(user: User): void{
     if (this.userService.getUser(user.userName).password == this.user.password){
-      return true;
+       this.router.navigate(['']);
+      // window.location.href='';
+       this.connectedUser = user;
     }
     else{
       this.showLoginError = true;
-      return false;
     }
+  }
+
+  ngOnInit(): void {
+    this.user = new User();
   }
 }
