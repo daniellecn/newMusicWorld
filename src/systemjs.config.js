@@ -91,6 +91,13 @@
     'iterall': 'npm:iterall',
     'lodash': 'npm:lodash',
     'rxjs': 'npm:rxjs',
+    'subscriptions-transport-ws': 'npm:subscriptions-transport-ws',
+    'backo2': 'npm:backo2',
+    'eventemitter3': 'npm:eventemitter3',
+    'lodash.isstring': 'npm:lodash.isstring',
+    'lodash.isobject': 'npm:lodash.isobject',
+    'lodash.assign': 'npm:lodash.assign',
+    'ws': 'npm:ws',
     'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
   };
 
@@ -109,6 +116,34 @@
     'graphql-anywhere': {
       main: '/lib/src/index.js',
       defaultExtension: 'js'
+    },
+    'backo2': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'eventemitter3': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'lodash.isstring': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'lodash.isobject': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'lodash.assign': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'ws': {
+      main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'subscriptions-transport-ws': {
+      main: 'dist/client.js',
+      defaultExtension: 'js',
     },
     'apollo-link-core': {
       main: '/lib/index.js',

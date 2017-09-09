@@ -17,6 +17,7 @@ export class UserService {
         mutation loginUser($userName: String!, $password:String!) {
             userMutations {
               loginUser(userName: $userName, password: $password) {
+                __typename 
                 id
                 userName
                 firstName
@@ -53,6 +54,7 @@ export class UserService {
         mutation registerUser($userName: String!, $password:String!, $firstName: String!, $lastName: String!) {
           userMutations {
             createUser(userName: $userName, password:$password, firstName:$firstName, lastName:$lastName) {
+                __typename 
               id
               userName
               firstName
@@ -112,6 +114,7 @@ export class UserService {
         query connectedUser {
           userQueries {
             me {
+              __typename 
               id
               userName
               firstName
@@ -124,6 +127,23 @@ export class UserService {
 
         return this.apollo.watchQuery({
             query: connectedUser
+        })
+    }
+
+    public subscribeToNewUsers(): Observable<{ userCreated: User }> {
+        const newUser = gql`
+        subscription newUser{
+            userCreated {
+              id
+              userName
+              firstName
+              lastName
+            }
+          }
+        `;
+
+        return this.apollo.subscribe({
+            query: newUser
         })
     }
 }
