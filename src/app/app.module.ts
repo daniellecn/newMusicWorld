@@ -6,11 +6,15 @@ import { HttpModule }    from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
+import { ApolloModule } from 'apollo-angular';
+import { createClient } from './apolloClient';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent }  from './app.component';
 import { LoginComponent } from './Components/login.component';
+import { LogoutComponent } from './Components/logout.component';
+import { RegisterComponent } from './Components/register.component';
 import { ArtistComponent } from './Components/artist.component';
 import { ArtistDetailComponent } from './Components/artistDetail.component';
 import { SongsComponent } from './Components/songs.component';
@@ -23,9 +27,11 @@ import { SongService } from './Services/song.service'
 import { ArtistService } from './Services/artist.service'
 
 @NgModule({
-  declarations: [ 
-    AppComponent, 
+  declarations: [
+    AppComponent,
     LoginComponent,
+    LogoutComponent,
+    RegisterComponent,
     ArtistComponent,
     ArtistDetailComponent,
     SongsComponent,
@@ -33,7 +39,7 @@ import { ArtistService } from './Services/artist.service'
     Top10SongsComponent,
     SongDialogComponent
   ],
-  imports:      [ 
+  imports:      [
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -41,13 +47,13 @@ import { ArtistService } from './Services/artist.service'
     AppRoutingModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ApolloModule.forRoot(createClient)
   ],
   providers: [
     UserService,
     ArtistService,
     SongService,
-    LoginComponent
   ],
   bootstrap:    [ AppComponent ],
   entryComponents:[

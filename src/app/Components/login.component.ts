@@ -7,27 +7,25 @@ import { UserService } from './../Services/user.service'
 @Component({
   selector: 'login',
   templateUrl: './../Views/login.component.html'
-//   styleUrls: ['./CSS/login.component.css'],
+  //   styleUrls: ['./CSS/login.component.css'],
 })
-export class LoginComponent implements OnInit{ 
-   @Input() user : User;
-   connectedUser : User;
-   showLoginError : boolean;
-  
+export class LoginComponent implements OnInit {
+  @Input() user: User;
+  connectedUser: User;
+  showLoginError: boolean;
+
   constructor(private userService: UserService,
-              private router: Router){
-      this.showLoginError = false;
+    private router: Router) {
+    this.showLoginError = false;
   }
 
-  login(user: User): void{
-    if (this.userService.getUser(user.userName).password == this.user.password){
-       this.router.navigate(['']);
-      // window.location.href='';
-       this.connectedUser = user;
-    }
-    else{
-      this.showLoginError = true;
-    }
+  login(user: User): void {
+    this.userService.login(user.userName, user.password)
+      .subscribe(({ data }) => {
+        this.router.navigate(['']);
+      }, (error) => {
+        this.showLoginError = true;
+      });
   }
 
   ngOnInit(): void {

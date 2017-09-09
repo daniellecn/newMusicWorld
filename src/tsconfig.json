@@ -6,7 +6,10 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [ "es2015", "dom" ],
+    "lib": [ "es2015", "dom",  "esnext.asynciterable" ],
+    "types": [
+      "isomorphic-fetch"
+    ],
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   }

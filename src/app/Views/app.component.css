@@ -1,0 +1,16 @@
+.container, .navbar-header, .nav{
+    display: flex;
+    flex: 1
+}
+
+.navbar-nav>span {
+    flex: 1
+}
+.navbar-nav>li {
+    display: flex;
+    align-items: center;
+}
+.navbar-nav>li>p {
+    margin: 0;
+    color: white;
+}

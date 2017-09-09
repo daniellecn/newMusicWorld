@@ -3,20 +3,27 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav">
                 <li>
-                <a routerLink ='/allSongs'>All Songs</a>  
-                </li>
-               <li>
-                <a routerLink ='/top10artists'>TOP 10 ARTISTS</a>  
+                    <a routerLink='/allSongs'>All Songs</a>
                 </li>
                 <li>
-                <a routerLink ='/top10songs'>TOP 10 SONGS</a>  
-                </li>
-                <li *ngIf="loginComp.connectedUser">
-                <a routerLink ='/artist'>Artists</a>  
+                    <a routerLink='/top10artists'>TOP 10 ARTISTS</a>
                 </li>
                 <li>
-                <a routerLink ='/login' *ngIf="!loginComp.connectedUser">Login</a>  
-                <a routerLink ='/login' *ngIf="loginComp.connectedUser">Logout</a>  
+                    <a routerLink='/top10songs'>TOP 10 SONGS</a>
+                </li>
+                <li *ngIf="user">
+                    <a routerLink='/artist'>Artists</a>
+                </li>
+                <li>
+                    <a routerLink='/login' *ngIf="!user">Login</a>
+                    <a routerLink='/logout' *ngIf="user">Logout</a>
+                </li>
+                <li>
+                    <a routerLink='/register' *ngIf="!user">Register</a>
+                </li>
+                <span></span>
+                <li *ngIf="user">
+                    <p>hello {{user?.firstName}}</p>
                 </li>
             </ul>
         </div>

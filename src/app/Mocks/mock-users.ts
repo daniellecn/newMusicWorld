@@ -1,6 +1,6 @@
 import { User } from './../Modules/user';
 
 export const USERS: User[] = [
-  { userName: '1', password: '1' },
-  { userName: '2', password: '2' },
+  { id: '1', userName: '1', firstName: "a", lastName: "a", password: '1' },
+  { id: '2', userName: '2', firstName: "b", lastName: "b", password: '2' },
 ];
