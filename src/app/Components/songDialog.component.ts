@@ -7,8 +7,8 @@ import { SongService } from './../Services/song.service'
 
 @Component({
   selector: 'song-Dialog',
-  templateUrl: './../Views/songDialog.component.html'
-//   styleUrls: ['./CSS/login.component.css'],
+  templateUrl: './../Views/songDialog.component.html',
+  styleUrls: ['./../CSS/songDialog.component.css'],
 })
 export class SongDialogComponent implements OnInit { 
     title: string;

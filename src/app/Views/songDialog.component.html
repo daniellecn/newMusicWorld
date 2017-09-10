@@ -1,15 +1,10 @@
-<div flex="70%">
-    <md-toolbar>
-        <!-- <div class="md-toolbar-tools">
-            <h2>Details</h2>
-            <span flex></span>
-            <md-icon (click)="cancel()">clear</md-icon>
-        </div> -->
+<div>
+    <md-toolbar class="md-toolbar-tools songs-toolbar">
         <h2 md-dialog-title>{{title}}</h2>
-        <!-- <md-dialog-actions>
-              <button md-button [md-dialog-close]="true"><md-icon>clear</md-icon></button> 
-            
-        </md-dialog-actions> -->
+        <span></span>
+        <md-dialog-actions>
+            <button md-icon-button md-dialog-close><md-icon>clear</md-icon></button> 
+        </md-dialog-actions> 
     </md-toolbar>
      <div layout-align="center center">
         <div layout="row">
@@ -17,19 +12,17 @@
                 <h4>{{song.name}}</h4>
                 <h5 ng-show="song.album">{{song.album}} </h5>
                 <h6 class="sub-title">{{'by ' + song.artist.firstName + ' ' + song.artist.lastName}}</h6>
-            </div> 
+            </div>
+            <div layout-padding ng-show="song.publisher || song.publicationYear">
+                {{"published" + (song.publisher ? " by " + song.publisher: " ") +
+                (song.publicationYear? " at " + song.publicationYear: "")}}
+                {{song.genere}}
+            </div>  
         </div>
     </div>
-    <div layout="column" layout-align="center center">
+    <div class="song-words" layout="column" layout-align="center center">
          <div>
             {{song.words}}
         </div> 
     </div>
-    <div>
-         <div layout-padding class="book-publish-data" ng-show="song.publisher || song.publicationYear">
-            {{"published" + (song.publisher ? " by " + song.publisher: " ") +
-            (song.publicationYear? " at " + song.publicationYear: "")}}
-            <p>{{song.genere}}</p>
-        </div> 
-    </div> 
 </div>
