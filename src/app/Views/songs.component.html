@@ -5,11 +5,12 @@
         {{action}}
         <md-list>
             <md-list-item *ngFor="let song of songs">
-                <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p>
-                <span flex></span>
-                 <div layout="row" layout-align="end center" *ngIf="action == 'all'">  
-                    <md-icon (click)="songDetailDialog(song)">details</md-icon> 
-                 </div> 
+                <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p> 
+                <!-- <div layout="row" layout-align="end center"> -->
+                <md-icon (click)="songDetailDialog(song)">details</md-icon> 
+                <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon> 
+                <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon> 
+                <!-- </div> -->
             </md-list-item>
         </md-list>
     </md-card-content>

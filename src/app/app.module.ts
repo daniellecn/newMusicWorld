@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { ApolloModule } from 'apollo-angular';
 import { createClient } from './apolloClient';
-
 import { AppRoutingModule } from './app-routing.module';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { AppComponent }  from './app.component';
 import { LoginComponent } from './Components/login.component';
@@ -17,7 +17,7 @@ import { LogoutComponent } from './Components/logout.component';
 import { RegisterComponent } from './Components/register.component';
 import { ArtistComponent } from './Components/artist.component';
 import { ArtistDetailComponent } from './Components/artistDetail.component';
-import { SongsComponent } from './Components/songs.component';
+import { SongsComponent, SongDeleteDialogComponent } from './Components/songs.component';
 import { Top10ArtistsComponent } from './Components/top10artists.component';
 import { Top10SongsComponent } from './Components/top10songs.component';
 import { SongDialogComponent } from './Components/songDialog.component';
@@ -37,7 +37,8 @@ import { ArtistService } from './Services/artist.service'
     SongsComponent,
     Top10ArtistsComponent,
     Top10SongsComponent,
-    SongDialogComponent
+    SongDialogComponent,
+    SongDeleteDialogComponent
   ],
   imports:      [
     CommonModule,
@@ -54,10 +55,13 @@ import { ArtistService } from './Services/artist.service'
     UserService,
     ArtistService,
     SongService,
+    {provide: MD_DIALOG_DATA, useValue: {} },
+    {provide: MdDialogRef, useValue: {} },
   ],
   bootstrap:    [ AppComponent ],
   entryComponents:[
-    SongDialogComponent
+    SongDialogComponent,
+    SongDeleteDialogComponent
   ]
 })
 export class AppModule{ 
