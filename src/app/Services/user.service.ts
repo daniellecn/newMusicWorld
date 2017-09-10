@@ -4,7 +4,6 @@ import { ApolloQueryObservable } from 'apollo-angular/build/src';
 import { Injectable } from '@angular/core'
 
 import { User } from './../Modules/user';
-import { USERS } from './../Mocks/mock-users';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 

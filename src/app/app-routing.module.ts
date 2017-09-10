@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'artist', component: ArtistComponent},
   { path: 'artistDetail', component: ArtistDetailComponent},
   { path: 'top10artists', component: Top10ArtistsComponent},
-  { path: 'top10songs/:action', component: SongsComponent}
+  { path: 'top10songs', component: Top10SongsComponent}
 ];
 
 @NgModule({

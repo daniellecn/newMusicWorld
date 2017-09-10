@@ -18,8 +18,8 @@ export class Top10SongsComponent {
     }
     
     getSongs(): void {
-        this.songService.getSongsWithPlays().then(function(songs: Song[]){
-            this.songs = songs;
-        }.bind(this));
+        this.songService.getTopSongs().subscribe(({ data }) => {
+            this.songs = data.songQueries.topSongs;
+        });
     }
 }
