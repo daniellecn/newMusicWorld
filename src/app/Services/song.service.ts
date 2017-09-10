@@ -66,4 +66,44 @@ export class SongService {
             query: topSongs
         })
     }
+
+    removeSong(id: string): Observable<ApolloExecutionResult<{ songMutations: { removeSong: Song[] } }>> {
+        const removeSong = gql`
+        mutation removeSong($songId:ID!){
+            songMutations {
+              removeSong(id: $songId) {
+                id
+              }
+            }
+          }
+        `;
+
+        return this.apollo.mutate({
+            mutation: removeSong,
+            variables: {
+                songId: id
+            },
+            updateQueries: {
+                // update apollo store
+                topSongs: (prev, { mutationResult }) => {
+                    if (!mutationResult.data) { return prev; }
+
+                    return Object.assign({}, prev, {
+                        songQueries: {
+                            topSongs: prev.songQueries.topSongs.filter((song: Song) => song.id !== mutationResult.data.songMutations.removeSong.id)
+                        },
+                    });
+                },
+                allSongs: (prev, { mutationResult }) => {
+                    if (!mutationResult.data) { return prev; }
+
+                    return Object.assign({}, prev, {
+                        songQueries: {
+                            allSongs: prev.songQueries.allSongs.filter((song: Song) => song.id !== mutationResult.data.songMutations.removeSong.id)
+                        },
+                    });
+                },
+            },
+        });
+    }
 }

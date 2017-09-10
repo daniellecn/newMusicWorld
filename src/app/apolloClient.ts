@@ -6,7 +6,10 @@ const wsClient = new SubscriptionClient(`ws://localhost:5000/graphql-subscriptio
 
 // Create a normal network interface:
 const networkInterface = createNetworkInterface({
-	uri: 'http://localhost:4200/graphql'
+	uri: 'http://localhost:4200/graphql',
+	opts: {
+		credentials: 'include'
+	}
 });
 
 // Extend the network interface with the WebSocket
