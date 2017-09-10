@@ -9,7 +9,7 @@ interface QueryResponse {
 @Component({
   selector: 'my-app',
   templateUrl: './Views/app.component.html',
-  styleUrls: ['./Views/app.component.css']
+  styleUrls: ['./CSS/app.component.css']
 })
 export class AppComponent implements OnInit {
   private user: User;
