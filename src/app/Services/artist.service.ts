@@ -76,8 +76,15 @@ export class ArtistService{
         })
     }
 
-    
-    // getArtist(artist: Artist): Artist {
-    //  return this.getUsers().find(user => user.userName === userName);
-    // }
+    createArtist(artist: Artist): string{
+        return `Artist added successfully`;
+    }
+
+    updateArtist(artist: Artist): string{
+        return `Artist updated successfully`;
+    }
+
+    removeArtist(artistId: string): string{
+        return `Artist dalated successfully`;
+    }
 }

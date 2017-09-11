@@ -6,7 +6,6 @@
         <md-card-content>
             <h2>All Songs</h2>
             <md-divider></md-divider>
-            {{action}}
             <md-list>
                 <md-list-item *ngFor="let song of songs">
                     <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p>

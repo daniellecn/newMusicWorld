@@ -56,4 +56,12 @@ export class SongAddEditDialogComponent {
     displayNames(artistOption: Artist): string {
         return artistOption ? (artistOption.firstName + ' ' + artistOption.lastName) : artistOption.firstName;
     }
+
+    saveSong(song: Song){
+        if(this.title.localeCompare(`ADD NEW SONG`)){
+            this.songService.createSong(song);
+        }else{
+            this.songService.updateSong(song);
+        }
+    }
 }

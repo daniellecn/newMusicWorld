@@ -53,7 +53,6 @@ export class SongsComponent implements OnInit {
     }
 
     songDetailDialog(song: Song): void {
-        // alert(this.action.toString());
         const dialogRef = this.dialog.open(SongDetailDialogComponent, {
             height: '500px',
             data: { selectedSong: song },

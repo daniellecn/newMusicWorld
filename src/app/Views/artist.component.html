@@ -1,34 +1,34 @@
 <div class="artist">
-    <!-- <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
-        <ng-md-icon icon="add"></ng-md-icon>
-    </md-button> -->
-        <md-card>   
+    <button md-fab (click)="artistEditDialog(null)" *ngIf="user">
+        <md-icon class="md-24 float-button-row md-fab-bottom-right">add</md-icon>
+    </button>
+    <md-card>
         <md-card-content>
-             <div class="flex-container" fxLayout.xs="column" fx-layout="row" >
+            <div class="flex-container" fxLayout.xs="column" fx-layout="row">
                 <h2>Artists</h2>
-                 <md-input-container class="md-block" class="flex-item"> 
-                    <label>First Name</label> 
-                    <input mdInput ng-model="artistSearch.firstName">  
+                <md-input-container class="md-block" class="flex-item">
+                    <label>First Name</label>
+                    <input mdInput ng-model="artistSearch.firstName">
                 </md-input-container>
-                 <md-input-container class="md-block" class="flex-item">
+                <md-input-container class="md-block" class="flex-item">
                     <label>Last Name</label>
                     <input mdInput ng-model="artistSearch.lastName">
-                </md-input-container>  
-                 <md-input-container class="md-block" class="flex-item">
+                </md-input-container>
+                <md-input-container class="md-block" class="flex-item">
                     <label>Country</label>
                     <input mdInput ng-model="artistSearch.country">
-                </md-input-container>  
+                </md-input-container>
                 <button md-button (click)="searchArtist(artistSearch)">Search</button>
-            </div> 
+            </div>
             <md-divider></md-divider>
-                 <md-list class="artistList" *ngIf="showTable"> 
-                    <md-list-item *ngFor="let artist of artists" class="noright" aria-hidden="false">  
-                        <p>{{artist.firstName}}&nbsp;{{artist.lastName}}</p>     
-                        <md-icon aria-hidden="false" (click)="goToArtistDetails()" class="md-secondary md-hue-3">details</md-icon> 
-                        <md-icon (click)="goToArtistEdit()" class="md-secondary md-hue-3">edit</md-icon> 
-                        <md-icon (click)="goToArtistDelete(artist)" class="md-secondary md-hue-3">delete</md-icon> 
-                     </md-list-item> 
-                  </md-list>   
-          </md-card-content> 
-       </md-card>    
+            <md-list class="artistList" *ngIf="showTable">
+                <md-list-item *ngFor="let artist of artists" class="noright" aria-hidden="false">
+                    <p>{{artist.firstName}}&nbsp;{{artist.lastName}}</p>
+                    <!-- <md-icon (click)="artistDetailDialog(artist)">details</md-icon> -->
+                    <md-icon (click)="artistEditDialog(artist)" *ngIf="user">edit</md-icon>
+                    <md-icon md-raised-button (click)="artistDeleteDialog(artist)" *ngIf="user">delete</md-icon>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
 </div>

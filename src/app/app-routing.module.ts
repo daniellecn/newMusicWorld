@@ -10,7 +10,7 @@ import { LogoutComponent } from './Components/logout.component';
 
 
 import { ArtistComponent } from './Components/artist.component';
-import { ArtistDetailComponent } from './Components/artistDetail.component';
+// import { ArtistDetailDialogComponent } from './Components/artistDetailDialog.component';
 import { Top10ArtistsComponent } from './Components/top10artists.component';
 import { Top10SongsComponent } from './Components/top10songs.component';
 
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'artist', component: ArtistComponent},
-  { path: 'artistDetail', component: ArtistDetailComponent},
+  // { path: 'artistDetail', component: ArtistDetailComponent},
   { path: 'top10artists', component: Top10ArtistsComponent},
   { path: 'top10songs', component: Top10SongsComponent}
 ];

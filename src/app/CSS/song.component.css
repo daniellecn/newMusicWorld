@@ -68,3 +68,7 @@ textarea{
     left: auto;
     position: fixed !important;
 }
+
+.btn{
+    margin: 10px;
+}
