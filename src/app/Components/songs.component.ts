@@ -22,20 +22,31 @@ interface QueryResponse {
 @Component({
     selector: 'songs',
     templateUrl: './../Views/songs.component.html',
-    styleUrls: ['./../CSS/song.component.css']
+    styleUrls: ['./../CSS/song.component.css'],
+    styles: [`
+        input {
+            min-width: 100px;
+        }
+    `]
 })
 
 export class SongsComponent implements OnInit {
     songs: Array<Song>;
+
+    displayedSongs: Array<Song>;
     title: string;
     private user: User;
     selectedSong: Song;
+
+    songSearch: Song;
 
     constructor(private songsService: SongService,
         private userService: UserService,
         private router: ActivatedRoute,
         public dialog: MdDialog) {
+        this.displayedSongs = new Array<Song>();
         this.songs = new Array<Song>();
+        this.songSearch = new Song();
         this.getSongs();
     }
 
@@ -48,8 +59,41 @@ export class SongsComponent implements OnInit {
     getSongs(): void {
         this.songsService.getSongs()
             .subscribe(({ data }) => {
-                this.songs = data.songQueries.allSongs;
+                this.songs = data.songQueries.allSongs
+                this.refilter();
             })
+    }
+
+    refilter(): void {
+        this.displayedSongs = this.songs.filter((song: Song) => this.filterSong(song));
+    }
+
+    private filterSong(song: Song) {
+        if (!this.songSearch.album && !this.songSearch.name && !this.songSearch.genere)
+            return true;
+        else {
+            let isRelevant = false;
+
+            if (this.songSearch.name) {
+                if (song.name)
+                    isRelevant = song.name.startsWith(this.songSearch.name);
+                else
+                    return false;
+            }
+            if (this.songSearch.album) {
+                if (song.album)
+                    isRelevant = isRelevant || song.album.startsWith(this.songSearch.album);
+                else
+                    return false;
+            }
+            if (this.songSearch.genere) {
+                if (song.genere)
+                    isRelevant = isRelevant || song.genere.startsWith(this.songSearch.genere);
+                else
+                    return false;
+            }
+            return isRelevant;
+        }
     }
 
     songDetailDialog(song: Song): void {

@@ -2,9 +2,20 @@
     <md-card>
         <md-card-content>
             <h2>All Songs</h2>
+            <form class="form-inline" name="songForm">
+                <div class="form-group">
+                    <input type="text" placeholder="name" class="form-control" [(ngModel)]="songSearch.name" name="name" (input)="refilter()">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="genre" class="form-control" [(ngModel)]="songSearch.genere" name="genere" (input)="refilter()">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="album" class="form-control" [(ngModel)]="songSearch.album" name="album" (input)="refilter()">
+                </div>
+            </form>
             <md-divider></md-divider>
             <md-list>
-                <md-list-item *ngFor="let song of songs">
+                <md-list-item *ngFor="let song of displayedSongs">
                     <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p>
                     <!-- <div layout="row" layout-align="end center"> -->
                     <md-icon (click)="songDetailDialog(song)">details</md-icon>
