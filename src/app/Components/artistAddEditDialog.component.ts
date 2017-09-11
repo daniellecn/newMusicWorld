@@ -13,20 +13,27 @@ import { ArtistService } from './../Services/artist.service';
 
 export class ArtistAddEditDialogComponent {
     title: string;
+    isCreate: boolean;
     selectedArtist: Artist;
 
         constructor(public dialogRef: MdDialogRef<ArtistAddEditDialogComponent>,
         @Inject(MD_DIALOG_DATA) public data: any,
         private artistService: ArtistService) {
         this.selectedArtist = data.selectedSong;
-        this.title = data.title;
+        this.isCreate = data.isCreate;
+        this.title = this.isCreate ? 'ADD NEW ARTIST' : `EDIT ${this.selectedArtist.firstName} ${this.selectedArtist.lastName}`;
     }
 
-    saveArtist(artist: Artist){
-        if(this.title.localeCompare(`ADD NEW ARTIST`)){
-            this.artistService.createArtist(artist);
-        }else{
-            this.artistService.updateArtist(artist);
-        }
+    saveArtist(){
+        if (this.isCreate)
+            this.artistService.createArtist(this.selectedArtist).subscribe(({ data }) => {
+                console.log('created new artist');
+                this.dialogRef.close();
+            })
+        else
+            this.artistService.updateArtist(this.selectedArtist).subscribe(({ data }) => {
+                console.log('created new artist');
+                this.dialogRef.close();
+            })
     }
 }

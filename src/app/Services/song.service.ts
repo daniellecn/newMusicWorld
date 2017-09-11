@@ -30,32 +30,34 @@ songQueries {
   }
 `;
 
+export const allSongs = gql`
+query allSongs{
+    songQueries {
+      allSongs {
+        id
+           name
+        artist {
+          id
+          firstName
+          lastName
+        }
+        album
+        publisher
+        publicationYear
+        genere
+        views
+        words
+      }
+    }
+  }
+`;
+
+
 @Injectable()
 export class SongService {
     constructor(private apollo: Apollo) { }
 
     getSongs(): Observable<ApolloExecutionResult<{ songQueries: { allSongs: Song[] } }>> {
-        const allSongs = gql`
-        query allSongs{
-            songQueries {
-              allSongs {
-                id
-                   name
-                artist {
-                  id
-                  firstName
-                  lastName
-                }
-                album
-                publisher
-                publicationYear
-                genere
-                views
-                words
-              }
-            }
-          }
-        `;
 
         return this.apollo.watchQuery({
             query: allSongs

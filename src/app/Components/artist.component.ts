@@ -8,6 +8,7 @@ import { ArtistService } from './../Services/artist.service'
 import { UserService } from './../Services/user.service'
 import { ArtistDetailDialogComponent } from './../Components/artistDetailDialog.component';
 import { ArtistAddEditDialogComponent } from './../Components/artistAddEditDialog.component';
+import { ArtistDeleteDialogComponent } from './artistDeleteDialog.component';
 
 @Component({
     selector: 'artist',
@@ -72,14 +73,26 @@ export class ArtistComponent implements OnInit {
         });
     }
 
+    artistDeleteDialog(artist: Artist): void {
+        const dialogRef = this.dialog.open(ArtistDeleteDialogComponent, {
+            height: '500px',
+            data: { artist },
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.searchArtist(this.artistSearch);
+        });
+    }
+
     artistEditDialog(artist: Artist): void {
+        let isCreate = false;
         if (artist == null) {
-            this.title = `ADD NEW ARTIST`
             this.selectedArtist = new Artist();
+            isCreate = true;
         }
         else {
-            this.title = `EDIT `.concat(artist.firstName).concat(` `).concat(artist.lastName);
-            this.selectedArtist = artist;
+            // data returned from graphql is readonly
+            this.selectedArtist = Object.assign({}, artist);
         }
 
         let dialogRef = this.dialog.open(ArtistAddEditDialogComponent, {
@@ -87,12 +100,12 @@ export class ArtistComponent implements OnInit {
             width: '750px',
             data: {
                 selectedSong: this.selectedArtist,
-                title: this.title
+                isCreate
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            this.searchArtist(this.artistSearch);
         });
     }
 }

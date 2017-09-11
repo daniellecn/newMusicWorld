@@ -7,17 +7,17 @@
 
 <md-card-content class="md-padding">
     <div>
-        <form class="form-inline" name="songForm">
+        <form class="form-inline" name="songForm" (ngSubmit)="saveArtist()">
             <div class="form-group">
                 <input type="text" placeholder="firstName" class="form-control" [(ngModel)]="selectedArtist.firstName" name="firstName">
             </div>
             <div class="form-group">
-                <input type="text" placeholder="lastName" class="form-control" [(ngModel)]="selectedArtist.LastName" name="lastName">
+                <input type="text" placeholder="lastName" class="form-control" [(ngModel)]="selectedArtist.lastName" name="lastName">
             </div>
             <div class="form-group">
                 <input type="text" placeholder="country" class="form-control" [(ngModel)]="selectedArtist.country" name="country">
             </div>
+            <button type="submit" class="btn btn-warning btn-lg">Save</button>
         </form>
-        <button type="submit" class="btn btn-warning btn-lg" (clikc)="saveArtist(selectedArtist)">Save</button>
     </div>
 </md-card-content>

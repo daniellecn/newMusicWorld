@@ -20,7 +20,6 @@ export class ArtistDeleteDialogComponent {
             this.selectedArtist = data.artist;
         }
     onYesClick(artist: Artist): void {
-        
-        this.artistService.removeArtist(artist.id.toString());
+        this.artistService.removeArtist(artist).subscribe();
     }
 }
