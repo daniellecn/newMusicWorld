@@ -57,6 +57,7 @@ h6.sub-title{
 
 textarea{
     width: 600px;
+     border-radius: 5px 
 }
 
 .mat-dialog-container{
@@ -83,4 +84,7 @@ textarea{
 
 .md-toolbar-tools {
     height: 64px;
+}
+section { 
+    display: block;
 }
