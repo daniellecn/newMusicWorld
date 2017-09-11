@@ -1,5 +1,6 @@
 .idea
 node_modules
+node_modules_1
 jspm_packages
 npm-debug.log
 debug.log

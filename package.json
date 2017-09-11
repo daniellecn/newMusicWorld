@@ -34,7 +34,6 @@
     "@angular/platform-browser": "~4.3.4",
     "@angular/platform-browser-dynamic": "~4.3.4",
     "@angular/router": "~4.3.4",
-    "@angular2-material/core": "^2.0.0-alpha.8-3",
     "@types/ws": "^3.0.2",
     "angular-in-memory-web-api": "~0.3.0",
     "angular-material": "^1.1.5",
@@ -55,7 +54,7 @@
   },
   "devDependencies": {
     "@angular/animations": "^4.3.6",
-    "@angular/material": "github:angular/material2-builds",
+    "@angular/material": "2.0.0-beta.3",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jasmine": "^2.5.54",
     "@types/node": "^6.0.46",

@@ -15,14 +15,14 @@ import { Top10SongsComponent } from './Components/top10songs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: 'allSongs/:action', component: SongsComponent},
+  { path: 'allSongs', component: SongsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'artist', component: ArtistComponent},
   { path: 'artistDetail', component: ArtistDetailComponent},
   { path: 'top10artists', component: Top10ArtistsComponent},
-  { path: 'top10songs/:action', component: SongsComponent}
+  { path: 'top10songs', component: SongsComponent}
 ];
 
 @NgModule({

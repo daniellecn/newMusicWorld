@@ -1,19 +1,22 @@
-<md-card>
-    <md-card-content>
-        <h2>All Songs</h2>
-        <md-divider></md-divider>
-        {{action}}
-        <md-list>
-            <md-list-item *ngFor="let song of songs">
-                <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p> 
-                <!-- <div layout="row" layout-align="end center"> -->
-                <md-icon (click)="songDetailDialog(song)">details</md-icon> 
-                <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon> 
-                <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon> 
-                <!-- </div> -->
-            </md-list-item>
-        </md-list>
-    </md-card-content>
-</md-card>
-
-
+<div>
+    <button md-fab (click)="songEditDialog(null)" *ngIf="user">
+        <md-icon class="md-24 float-button-row md-fab-bottom-right">add</md-icon>
+    </button>
+    <md-card>
+        <md-card-content>
+            <h2>All Songs</h2>
+            <md-divider></md-divider>
+            {{action}}
+            <md-list>
+                <md-list-item *ngFor="let song of songs">
+                    <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p>
+                    <!-- <div layout="row" layout-align="end center"> -->
+                    <md-icon (click)="songDetailDialog(song)">details</md-icon>
+                    <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon>
+                    <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon>
+                    <!-- </div> -->
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>

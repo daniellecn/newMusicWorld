@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';  
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,10 +17,13 @@ import { LogoutComponent } from './Components/logout.component';
 import { RegisterComponent } from './Components/register.component';
 import { ArtistComponent } from './Components/artist.component';
 import { ArtistDetailComponent } from './Components/artistDetail.component';
-import { SongsComponent, SongDeleteDialogComponent } from './Components/songs.component';
+import { SongsComponent } from './Components/songs.component';
+import { SongAddEditDialogComponent } from './Components/songAddEditDialog.component';
+import { SongDeleteDialogComponent } from './Components/songDeleteDialog.component';
 import { Top10ArtistsComponent } from './Components/top10artists.component';
 import { Top10SongsComponent } from './Components/top10songs.component';
-import { SongDialogComponent } from './Components/songDialog.component';
+import { SongDetailDialogComponent } from './Components/songDetailDialog.component';
+
 
 import { UserService } from './Services/user.service'
 import { SongService } from './Services/song.service'
@@ -37,8 +40,9 @@ import { ArtistService } from './Services/artist.service'
     SongsComponent,
     Top10ArtistsComponent,
     Top10SongsComponent,
-    SongDialogComponent,
-    SongDeleteDialogComponent
+    SongDetailDialogComponent,
+    SongDeleteDialogComponent,
+    SongAddEditDialogComponent
   ],
   imports:      [
     CommonModule,
@@ -49,6 +53,7 @@ import { ArtistService } from './Services/artist.service'
     FlexLayoutModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
     ApolloModule.forRoot(createClient)
   ],
   providers: [
@@ -56,12 +61,13 @@ import { ArtistService } from './Services/artist.service'
     ArtistService,
     SongService,
     {provide: MD_DIALOG_DATA, useValue: {} },
-    {provide: MdDialogRef, useValue: {} },
+    {provide: MdDialogRef, useValue: {} }
   ],
   bootstrap:    [ AppComponent ],
   entryComponents:[
-    SongDialogComponent,
-    SongDeleteDialogComponent
+    SongDetailDialogComponent,
+    SongDeleteDialogComponent,
+    SongAddEditDialogComponent
   ]
 })
 export class AppModule{ 

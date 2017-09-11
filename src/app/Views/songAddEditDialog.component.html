@@ -1,0 +1,49 @@
+<md-toolbar class="md-toolbar-tools songs-toolbar">
+    <h2>{{title}}</h2>
+    <md-dialog-actions>
+        <button md-icon-button md-dialog-close><md-icon>clear</md-icon></button>
+    </md-dialog-actions>
+</md-toolbar>
+
+<md-card-content class="md-padding">
+    <div>
+        <form class="form-inline" name="songForm">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" [(ngModel)]="selectedSong.name" name="name">
+            </div>
+            <div class="form-group">
+                <label>Artist</label>
+                <input type="text" class="form-control" mdInput [formControl]="artistControl" [mdAutocomplete]="auto">
+                <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayNames">
+                    <md-option *ngFor="let artistOption of artistsOptions" [value]="artistOption">
+                        {{ artistOption.firstName }} {{ artistOption.lastName }}
+                    </md-option>
+                </md-autocomplete>
+            </div>
+            <div class="form-group">
+                <label>Album</label>
+                <input type="text" class="form-control" [(ngModel)]="selectedSong.Album" name="album">
+            </div>
+            <div class="form-group">
+                <label>Publisher</label>
+                <input type="text" class="form-control" [(ngModel)]="selectedSong.publisher" name="publisher">
+            </div>
+            <div class="form-group">
+                <label>Publication Year</label>
+                <input type="number" class="form-control" [(ngModel)]="selectedSong.publicationYear" name="publicationYear">
+            </div>
+            <div class="form-group">
+                <label>Genere</label>
+                <input type="text" class="form-control" [(ngModel)]="selectedSong.genere" name="genere">
+            </div>
+        </form>
+        <form class="form-inline" name="sondWordsForm">
+            <div class="form-group">
+                <label>Song words</label>
+                <textarea [(ngModel)]="selectedSong.words" name="words" rows="10"></textarea>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+    </div>
+</md-card-content>
