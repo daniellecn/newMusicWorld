@@ -108,6 +108,7 @@
     'd3-time': 'npm:d3-time',
     'd3-time-format': 'npm:d3-time-format',
     'd3-color': 'npm:d3-color',
+    '@agm/core': 'npm:@agm/core/core.umd.js',
     'ws': 'npm:ws',
     'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
   };

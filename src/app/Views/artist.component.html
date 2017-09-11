@@ -25,6 +25,9 @@
                     <md-icon md-raised-button (click)="artistDeleteDialog(artist)" *ngIf="user">delete</md-icon>
                 </md-list-item>
             </md-list>
+            <agm-map id="google-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                <agm-marker *ngFor="let artist of artists" [latitude]="artist.lat" [longitude]="artist.long"></agm-marker>
+            </agm-map>
         </md-card-content>
     </md-card>
     <button md-fab (click)="artistEditDialog(null)" *ngIf="user">

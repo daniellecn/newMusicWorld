@@ -10,6 +10,7 @@ import { ApolloModule } from 'apollo-angular';
 import { createClient } from './apolloClient';
 import { AppRoutingModule } from './app-routing.module';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { AgmCoreModule } from '@agm/core';
 
 import { UserService } from './Services/user.service'
 import { AppComponent } from './app.component';
@@ -60,7 +61,11 @@ import { Top10ArtistsComponent } from './Components/top10artists.component';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    ApolloModule.forRoot(createClient)
+    ApolloModule.forRoot(createClient),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAVvxD7pbVARxYHsfOVXbNAZyXh4eXu_0o",
+      libraries: ["places"]
+    })
   ],
   providers: [
     UserService,

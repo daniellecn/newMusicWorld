@@ -25,6 +25,10 @@ import { ArtistDeleteDialogComponent } from './artistDeleteDialog.component';
         .form-group>input{
             min-width: 100px;
         }
+        #google-map {
+            width: auto;
+            height: 500px;
+        }
     `],
     styleUrls: ['./../CSS/song.component.css']
 })
@@ -37,14 +41,32 @@ export class ArtistComponent implements OnInit {
     title: string;
     @Input() artistSearch: Artist;
 
+    public latitude: number;
+    public longitude: number;
+    public zoom: number;
+
     constructor(private artistService: ArtistService,
         private userService: UserService,
         private router: Router,
         public dialog: MdDialog) {
+        //set google maps defaults
+        this.zoom = 4;
+        this.latitude = 39.8282;
+        this.longitude = -98.5795;
         this.artistSearch = new Artist();
     }
 
     ngOnInit(): void {
+        if ("geolocation" in navigator) {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    this.latitude = position.coords.latitude;
+                    this.longitude = position.coords.longitude;
+                    this.zoom = 12;
+                  });
+            }
+        }
+
         this.artists = new Array<Artist>();
 
         this.searchArtist(this.artistSearch);
@@ -96,7 +118,7 @@ export class ArtistComponent implements OnInit {
         }
 
         let dialogRef = this.dialog.open(ArtistAddEditDialogComponent, {
-            height: '300px',
+            height: '650px',
             width: '750px',
             data: {
                 selectedSong: this.selectedArtist,

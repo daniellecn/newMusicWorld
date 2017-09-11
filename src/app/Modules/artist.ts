@@ -3,5 +3,7 @@ export class Artist{
   firstName: string;
   lastName: string;
   country: string;
+  long: number;
+  lat: number;
   views?: number;
 }

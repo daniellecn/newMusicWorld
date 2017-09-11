@@ -16,6 +16,8 @@ query topArtists{
         firstName
         lastName
         country
+        long
+        lat
         views
       }
     }
@@ -30,6 +32,8 @@ query searchArtists($firstName:String, $lastName:String, $country:String) {
         firstName
         lastName
         country
+        long
+        lat
         views
       }
     }
@@ -74,6 +78,8 @@ export class ArtistService {
                 firstName
                 lastName
                 country
+                long
+                lat
                 views
               }
             }
@@ -94,6 +100,8 @@ export class ArtistService {
                 firstName
                 lastName
                 country
+                long
+                lat
               }
             }
           }
@@ -116,6 +124,8 @@ export class ArtistService {
                 firstName
                 lastName
                 country
+                long
+                lat
               }
             }
           }
@@ -143,6 +153,8 @@ export class ArtistService {
                 firstName
                 lastName
                 country
+                long
+                lat
               }
             }
           }
