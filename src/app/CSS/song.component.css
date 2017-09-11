@@ -2,7 +2,15 @@
     height: 50px;
     min-height: 50px;
 }
+.mat-dialog-actions{
+    margin-bottom: auto;
+}
 
+button.mat-fab {
+    float: right;
+    margin-right: 10px;
+    background-color: dodgerblue;
+}
 .song-words{
     margin-top:20px;
     margin-bottom:20px;
@@ -71,4 +79,8 @@ textarea{
 
 .btn{
     margin: 10px;
+}
+
+.md-toolbar-tools {
+    height: 64px;
 }

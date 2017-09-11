@@ -1,7 +1,4 @@
 <div>
-    <button md-fab (click)="songEditDialog(null)" *ngIf="user">
-        <md-icon class="md-24 float-button-row md-fab-bottom-right">add</md-icon>
-    </button>
     <md-card>
         <md-card-content>
             <h2>All Songs</h2>
@@ -18,4 +15,7 @@
             </md-list>
         </md-card-content>
     </md-card>
+    <button md-fab (click)="songEditDialog(null)" *ngIf="user">
+        <md-icon class="md-24 float-button-row md-fab-bottom-right">add</md-icon>
+    </button>
 </div>

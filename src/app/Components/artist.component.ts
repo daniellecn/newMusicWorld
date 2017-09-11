@@ -12,7 +12,20 @@ import { ArtistAddEditDialogComponent } from './../Components/artistAddEditDialo
 @Component({
     selector: 'artist',
     templateUrl: './../Views/artist.component.html',
-    styleUrls: ['./../CSS/song.component.css'],
+    styles: [`
+        .form-inline {
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        .form-group>input{
+            min-width: 100px;
+        }
+    `],
+    styleUrls: ['./../CSS/song.component.css']
 })
 
 export class ArtistComponent implements OnInit {
@@ -33,6 +46,7 @@ export class ArtistComponent implements OnInit {
     ngOnInit(): void {
         this.artists = new Array<Artist>();
 
+        this.searchArtist(this.artistSearch);
         this.userService.connectedUser().subscribe(({ data }) => {
             this.user = data.userQueries.me;
         });
@@ -47,7 +61,7 @@ export class ArtistComponent implements OnInit {
             });
     }
 
-    artistDetailDialog(artist: Artist): void{
+    artistDetailDialog(artist: Artist): void {
         const dialogRef = this.dialog.open(ArtistDetailDialogComponent, {
             height: '500px',
             data: { selectedArtist: artist },
