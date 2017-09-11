@@ -88,3 +88,7 @@ textarea{
 section { 
     display: block;
 }
+
+.flex-1 {
+    flex: 1
+}

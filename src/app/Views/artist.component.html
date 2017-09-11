@@ -18,11 +18,11 @@
             </div>
             <md-divider></md-divider>
             <md-list class="artistList" *ngIf="showTable">
-                <md-list-item *ngFor="let artist of artists" class="noright" aria-hidden="false">
-                    <p>{{artist.firstName}}&nbsp;{{artist.lastName}}</p>
+                <md-list-item *ngFor="let artist of artists" class="artist-item noright" aria-hidden="false">
+                    <p class="flex-1">{{artist.firstName}}&nbsp;{{artist.lastName}}</p>
                     <!-- <md-icon (click)="artistDetailDialog(artist)">details</md-icon> -->
-                    <md-icon (click)="artistEditDialog(artist)" *ngIf="user">edit</md-icon>
-                    <md-icon md-raised-button (click)="artistDeleteDialog(artist)" *ngIf="user">delete</md-icon>
+                    <md-icon class="flex-1" (click)="artistEditDialog(artist)" *ngIf="user">edit</md-icon>
+                    <md-icon class="flex-1" md-raised-button (click)="artistDeleteDialog(artist)" *ngIf="user">delete</md-icon>
                 </md-list-item>
             </md-list>
             <agm-map id="google-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
