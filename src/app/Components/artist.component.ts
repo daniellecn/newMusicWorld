@@ -23,23 +23,19 @@ export class ArtistComponent implements OnInit {
                 private router: Router,
                 public dialog: MdDialog) { 
         this.artistSearch = new Artist();
-        // this.artists = [];
-        this.artists = new Array<Artist>();
-    }
-
-    getArtist(): void {
-        this.artistService.getArtists().then(function(artists: Artist[]){
-            this.artists = artists;
-        }.bind(this));
     }
 
     ngOnInit(): void{
-        this.getArtist();
+        this.artists = new Array<Artist>();
     }
 
-    searchArtist(artistSearch: Artist): Artist[]{
+    searchArtist(artistSearch: Artist): void{
         this.showTable = true;
-        return this.artists;
+
+        this.artistService.searchArtists(artistSearch.firstName, artistSearch.lastName, artistSearch.country)
+            .subscribe(({ data }) => {
+                this.artists = data.artistQueries.search;
+            });
     }
 
     goToArtistDelete(artist: Artist){

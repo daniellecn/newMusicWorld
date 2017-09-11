@@ -15,6 +15,7 @@ import { AppComponent }  from './app.component';
 import { LoginComponent } from './Components/login.component';
 import { LogoutComponent } from './Components/logout.component';
 import { RegisterComponent } from './Components/register.component';
+import { VideoComponent } from './Components/video.component';
 import { ArtistComponent } from './Components/artist.component';
 import { ArtistDetailComponent } from './Components/artistDetail.component';
 import { SongsComponent } from './Components/songs.component';
@@ -32,6 +33,7 @@ import { ArtistService } from './Services/artist.service'
 @NgModule({
   declarations: [
     AppComponent,
+    VideoComponent,
     LoginComponent,
     LogoutComponent,
     RegisterComponent,

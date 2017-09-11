@@ -46,9 +46,10 @@ export class SongsComponent implements OnInit {
     }
 
     getSongs(): void {
-        this.songsService.getSongs().then(function (songs: Array<Song>) {
-            this.songs = songs;
-        }.bind(this));
+        this.songsService.getSongs()
+            .subscribe(({ data }) => {
+                this.songs = data.songQueries.allSongs;
+            })
     }
 
     songDetailDialog(song: Song): void {
@@ -65,7 +66,10 @@ export class SongsComponent implements OnInit {
 
     songDeleteDialog(song: Song): void {
         let dialogRef = this.dialog.open(SongDeleteDialogComponent, {
-            width: '250px'
+            width: '250px',
+            data: {
+                song
+            }
         });
 
         dialogRef.afterClosed().subscribe(result => {

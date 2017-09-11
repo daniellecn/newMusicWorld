@@ -97,6 +97,17 @@
     'lodash.isstring': 'npm:lodash.isstring',
     'lodash.isobject': 'npm:lodash.isobject',
     'lodash.assign': 'npm:lodash.assign',
+    'd3-selection': 'npm:d3-selection',
+    'd3-scale': 'npm:d3-scale',
+    'd3-shape': 'npm:d3-shape',
+    'd3-path': 'npm:d3-path',
+    'd3-array': 'npm:d3-array',
+    'd3-collection': 'npm:d3-collection',
+    'd3-interpolate': 'npm:d3-interpolate',
+    'd3-format': 'npm:d3-format',
+    'd3-time': 'npm:d3-time',
+    'd3-time-format': 'npm:d3-time-format',
+    'd3-color': 'npm:d3-color',
     'ws': 'npm:ws',
     'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
   };
@@ -119,6 +130,50 @@
     },
     'backo2': {
       main: '/index.js',
+      defaultExtension: 'js',
+    },
+    'd3-selection': {
+      main: 'build/d3-selection.js',
+      defaultExtension: 'js',
+    },
+    'd3-shape': {
+      main: 'build/d3-shape.js',
+      defaultExtension: 'js',
+    },
+    'd3-scale': {
+      main: 'build/d3-scale.js',
+      defaultExtension: 'js',
+    },
+    'd3-collection': {
+      main: 'build/d3-collection.js',
+      defaultExtension: 'js',
+    },
+    'd3-interpolate': {
+      main: 'build/d3-interpolate.js',
+      defaultExtension: 'js',
+    },
+    'd3-format': {
+      main: 'build/d3-format.js',
+      defaultExtension: 'js',
+    },
+    'd3-time': {
+      main: 'build/d3-time.js',
+      defaultExtension: 'js',
+    },
+    'd3-color': {
+      main: 'build/d3-color.js',
+      defaultExtension: 'js',
+    },
+    'd3-time-format': {
+      main: 'build/d3-time-format.js',
+      defaultExtension: 'js',
+    },
+    'd3-path': {
+      main: 'build/d3-path.js',
+      defaultExtension: 'js',
+    },
+    'd3-array': {
+      main: 'build/d3-array.js',
       defaultExtension: 'js',
     },
     'eventemitter3': {
