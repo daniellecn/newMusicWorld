@@ -44,6 +44,6 @@
                 <textarea [(ngModel)]="selectedSong.words" name="words" rows="10"></textarea>
             </div>
         </form>
-        <button type="submit" class="btn btn-warning btn-lg">Save</button>
+        <button type="submit" class="btn btn-warning btn-lg" (click)="saveSong(selectedSong)">Save</button>
     </div>
 </md-card-content>

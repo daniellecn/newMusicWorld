@@ -7,10 +7,10 @@ import { Artist } from './../Modules/artist';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-@Injectable ()
-export class ArtistService{
-    constructor(private apollo: Apollo) {}
-    
+@Injectable()
+export class ArtistService {
+    constructor(private apollo: Apollo) { }
+
     searchArtists(firstName: string, lastName: string, country: string): Observable<ApolloExecutionResult<{ artistQueries: { search: Artist[] } }>> {
         const searchArtists = gql`
         query searchArtists($firstName:String, $lastName:String, $country:String) {
@@ -56,8 +56,15 @@ export class ArtistService{
         })
     }
 
-    
-    // getArtist(artist: Artist): Artist {
-    //  return this.getUsers().find(user => user.userName === userName);
-    // }
+    createArtist(artist: Artist): string{
+        return `Artist added successfully`;
+    }
+
+    updateArtist(artist: Artist): string{
+        return `Artist updated successfully`;
+    }
+
+    removeArtist(artistId: string): string{
+        return `Artist dalated successfully`;
+    }
 }

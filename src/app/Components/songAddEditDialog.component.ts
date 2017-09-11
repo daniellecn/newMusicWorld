@@ -7,6 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Song } from './../Modules/song';
 import { Artist } from './../Modules/artist';
 import { ArtistService } from './../Services/artist.service';
+import { SongService } from './../Services/song.service';
 
 @Component({
     selector: 'song-edit',
@@ -20,11 +21,20 @@ export class SongAddEditDialogComponent {
     title: String;
     constructor(public dialogRef: MdDialogRef<SongAddEditDialogComponent>,
         @Inject(MD_DIALOG_DATA) public data: any,
-        private artistService: ArtistService) {
+        private artistService: ArtistService,
+        private songService: SongService) {
         this.selectedSong = data.selectedSong;
         this.title = data.title;
-        artistService.getArtists().then(artists => this.artistsOptions = artists);
+        this.getArtists();
+        // artistService.getArtists().then(artists => this.artistsOptions = artists);
     }
+
+    getArtists(): void{
+        // this.artistService.getAllArtists().subscribe(({ data }) => {
+        //     this.artistsOptions = data.artistQueries.allArtists;
+        // })
+    }
+
     onYesClick(): void {
     }
 
@@ -32,5 +42,13 @@ export class SongAddEditDialogComponent {
 
     displayNames(artistOption: Artist): string {
         return artistOption ? (artistOption.firstName && ' ' && artistOption.lastName) : artistOption.firstName;
+    }
+
+    saveSong(song: Song){
+        if(this.title.localeCompare(`ADD NEW SONG`)){
+            this.songService.createSong(song);
+        }else{
+            this.songService.updateSong(song);
+        }
     }
 }
