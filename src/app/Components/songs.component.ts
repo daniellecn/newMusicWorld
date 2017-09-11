@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { FormControl, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
@@ -9,7 +10,10 @@ import { Artist } from './../Modules/artist';
 import { User } from './../Modules/user';
 import { SongService } from './../Services/song.service';
 import { UserService } from './../Services/user.service';
-import { SongDialogComponent } from './../Components/songDialog.component';
+import { ArtistService } from './../Services/artist.service';
+import { SongDetailDialogComponent } from './../Components/songDetailDialog.component';
+import { SongAddEditDialogComponent } from './../Components/songAddEditDialog.component';
+import { SongDeleteDialogComponent } from './../Components/songDeleteDialog.component';
 
 interface QueryResponse {
     userQueries: { me?: User };
@@ -17,14 +21,15 @@ interface QueryResponse {
 
 @Component({
     selector: 'songs',
-    templateUrl: './../Views/songs.component.html'
-    //   styleUrls: ['./CSS/login.component.css'],
+    templateUrl: './../Views/songs.component.html',
+    styleUrls: ['./../CSS/song.component.css']
 })
 
 export class SongsComponent implements OnInit {
     songs: Array<Song>;
-    action: string;
+    title: string;
     private user: User;
+    selectedSong: Song;
 
     constructor(private songsService: SongService,
         private userService: UserService,
@@ -35,10 +40,6 @@ export class SongsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.router.params.switchMap((params: ParamMap)=> params.get('action')).
-        // subscribe(action => this.action = action);
-        // this.router.params.switchMap((params: ParamMap)=> params.get["action"]).
-        // subscribe(action => this.action = action.toString());
         this.userService.connectedUser().subscribe(({ data }) => {
             this.user = data.userQueries.me;
         });
@@ -52,8 +53,7 @@ export class SongsComponent implements OnInit {
     }
 
     songDetailDialog(song: Song): void {
-        // alert(this.action.toString());
-        const dialogRef = this.dialog.open(SongDialogComponent, {
+        const dialogRef = this.dialog.open(SongDetailDialogComponent, {
             height: '500px',
             data: { selectedSong: song },
         });
@@ -76,30 +76,27 @@ export class SongsComponent implements OnInit {
             //   alert(result);
         });
     }
-}
 
-@Component({
-    selector: 'song-delete',
-    template: `
-    <h2 md-dialog-title>Delete</h2>
-    <md-dialog-content>Are you sure?</md-dialog-content>
-    <md-dialog-actions>
-        <button md-button md-dialog-close (click)="onNoClick()">No</button>
-        <button md-button md-dialog-close="true" (click)="onYesClick()">Yes</button>
-    </md-dialog-actions>
-  `
-    //   styleUrls: ['./CSS/login.component.css'],
-})
+    songEditDialog(song: Song): void {
+       if (song == null){
+           this.title = `ADD NEW SONG`
+            this.selectedSong = new Song();
+       }
+       else{
+           this.title = `EDIT `.concat(song.name);
+            this.selectedSong = song;
+       }
 
-export class SongDeleteDialogComponent {
-    constructor(public dialogRef: MdDialogRef<SongDeleteDialogComponent>, private songService: SongService,
-        @Inject(MD_DIALOG_DATA) public data: any) { }
-    
-    onYesClick(): void {
-        console.log('calling delete on ' + this.data.song.id);
-        this.songService.removeSong(this.data.song.id)
-            .subscribe(({ data }) => {
-                console.log('song deleted');
-            })
+        let dialogRef = this.dialog.open(SongAddEditDialogComponent, {
+            height: '500px',
+            width: '750px',
+            data: { selectedSong: this.selectedSong,
+                    title: this.title }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            //   alert(result);
+        });
     }
 }

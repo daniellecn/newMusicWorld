@@ -67,6 +67,14 @@ export class SongService {
         })
     }
 
+    createSong(song: Song): string{
+        return `Song added successfully`;
+    }
+
+    updateSong(song: Song): string{
+        return `Song updated successfully`;
+    }
+
     removeSong(id: string): Observable<ApolloExecutionResult<{ songMutations: { removeSong: Song[] } }>> {
         const removeSong = gql`
         mutation removeSong($songId:ID!){

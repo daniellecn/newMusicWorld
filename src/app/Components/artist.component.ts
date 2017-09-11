@@ -1,35 +1,44 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { Artist } from './../Modules/artist';
+import { User } from './../Modules/user';
 import { ArtistService } from './../Services/artist.service'
-import { ArtistDetailComponent } from './../Components/artistDetail.component';
+import { UserService } from './../Services/user.service'
+import { ArtistDetailDialogComponent } from './../Components/artistDetailDialog.component';
+import { ArtistAddEditDialogComponent } from './../Components/artistAddEditDialog.component';
 
 @Component({
-  selector: 'artist',
-  templateUrl: './../Views/artist.component.html',
-//   styleUrls: ['./CSS/login.component.css'],
+    selector: 'artist',
+    templateUrl: './../Views/artist.component.html',
+    styleUrls: ['./../CSS/song.component.css'],
 })
 
-export class ArtistComponent implements OnInit { 
-    // artists: Artist[];
+export class ArtistComponent implements OnInit {
+    private user: User;
     artists: Array<Artist>;
     showTable: boolean = false;
     selectedArtist: Artist;
+    title: string;
     @Input() artistSearch: Artist;
-    
+
     constructor(private artistService: ArtistService,
-                private router: Router,
-                public dialog: MdDialog) { 
+        private userService: UserService,
+        private router: Router,
+        public dialog: MdDialog) {
         this.artistSearch = new Artist();
     }
 
-    ngOnInit(): void{
+    ngOnInit(): void {
         this.artists = new Array<Artist>();
+
+        this.userService.connectedUser().subscribe(({ data }) => {
+            this.user = data.userQueries.me;
+        });
     }
 
-    searchArtist(artistSearch: Artist): void{
+    searchArtist(artistSearch: Artist): void {
         this.showTable = true;
 
         this.artistService.searchArtists(artistSearch.firstName, artistSearch.lastName, artistSearch.country)
@@ -38,15 +47,38 @@ export class ArtistComponent implements OnInit {
             });
     }
 
-    goToArtistDelete(artist: Artist){
-        //this.artists.
+    artistDetailDialog(artist: Artist): void{
+        const dialogRef = this.dialog.open(ArtistDetailDialogComponent, {
+            height: '500px',
+            data: { selectedArtist: artist },
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 
-    goToArtistDetails(){
-        // this.router.navigate(['/detail', this.selectedArtist]);
-        let dialogRef = this.dialog.open(ArtistDetailComponent, {
-        height: '400px',
-        width: '600px',
-        data: { artist: this.selectedArtist }});
+    artistEditDialog(artist: Artist): void {
+        if (artist == null) {
+            this.title = `ADD NEW ARTIST`
+            this.selectedArtist = new Artist();
+        }
+        else {
+            this.title = `EDIT `.concat(artist.firstName).concat(` `).concat(artist.lastName);
+            this.selectedArtist = artist;
+        }
+
+        let dialogRef = this.dialog.open(ArtistAddEditDialogComponent, {
+            height: '300px',
+            width: '750px',
+            data: {
+                selectedSong: this.selectedArtist,
+                title: this.title
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
     }
 }

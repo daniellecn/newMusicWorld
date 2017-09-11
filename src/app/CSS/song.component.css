@@ -35,3 +35,40 @@ div.details-div{
 h6.sub-title{
     padding-left: 2em;
 }
+
+.input-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-inline .form-group{
+    padding: 10px;  
+    display: inline-grid;
+}
+
+textarea{
+    width: 600px;
+}
+
+.mat-dialog-container{
+    display: flex;
+}
+
+.float-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.md-button.md-fab.md-fab-bottom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed !important;
+}
+
+.btn{
+    margin: 10px;
+}

@@ -1,9 +1,12 @@
-<md-card>
-    <md-card-content>
-        <h2>All Songs</h2>
-        <md-divider></md-divider>
-        {{action}}
-        <!-- <h4><i class="fa fa-angle-right"></i> Search for some songs!</h4>
+<div>
+    <button md-fab (click)="songEditDialog(null)" *ngIf="user">
+        <md-icon class="md-24 float-button-row md-fab-bottom-right">add</md-icon>
+    </button>
+    <md-card>
+        <md-card-content>
+            <h2>All Songs</h2>
+            <md-divider></md-divider>
+            <!-- <h4><i class="fa fa-angle-right"></i> Search for some songs!</h4>
         <span>
             <input type="text" class="form-control"  style="width: 171px; height: 34px; margin-left: 20px" ng-model="searchTerm" ng-change="requestItunesData(searchTerm)" placeholder="search term"/>
         </span> -->
@@ -19,15 +22,17 @@
                 <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon>
             </tr>
         </table> -->
-        <md-list>
-            <md-list-item *ngFor="let song of songs">
-                <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p> 
-                <!-- <div layout="row" layout-align="end center"> -->
-                
-                <!-- </div> -->
-            </md-list-item>
-        </md-list> 
-    </md-card-content>
-</md-card>
-
-
+            <md-list>
+                <md-list-item *ngFor="let song of songs">
+                    <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p>
+                    <!-- <div layout="row" layout-align="end center"> -->
+                    <md-icon (click)="songDetailDialog(song)">details</md-icon>
+                    <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon>
+                    <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon>
+                    <!-- </div> -->
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+>>>>>>> 0de383d3a583b4bb12d48b8363ef756240c71f41

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MD_DIALOG_DATA} from '@angular/material';
+import { MD_DIALOG_DATA } from '@angular/material';
 
 import { Song } from './../Modules/song';
 import { Artist } from './../Modules/artist';
@@ -7,10 +7,10 @@ import { SongService } from './../Services/song.service'
 
 @Component({
   selector: 'song-Dialog',
-  templateUrl: './../Views/songDialog.component.html',
-  styleUrls: ['./../CSS/songDialog.component.css'],
+  templateUrl: './../Views/songDetailDialog.component.html',
+  styleUrls: ['./../CSS/song.component.css'],
 })
-export class SongDialogComponent implements OnInit { 
+export class SongDetailDialogComponent implements OnInit { 
     title: string;
     song: Song;
 

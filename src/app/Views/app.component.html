@@ -4,16 +4,16 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav">
                 <li>
-                    <a [routerLink]="['/allSongs', 'all']">All Songs</a>
+                    <a routerLink='/allSongs'>Songs</a>
+                </li>
+                <li>
+                    <a routerLink='/artist'>Artists</a>
                 </li>
                 <li>
                     <a routerLink='/top10artists'>TOP 10 ARTISTS</a>
                 </li>
                 <li>
                     <a routerLink='/top10songs'>TOP 10 SONGS</a>
-                </li>
-                <li *ngIf="user">
-                    <a routerLink='/artist'>Artists</a>
                 </li>
                 <li>
                     <a routerLink='/login' *ngIf="!user">Login</a>
