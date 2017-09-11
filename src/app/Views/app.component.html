@@ -1,40 +1,52 @@
-<nav class="navbar navbar-inverse colored navbar-top" style="margin: 0px; padding: 0px">
-    <div class="container">
-        <img src="https://image.ibb.co/gnHAOa/Music_World.jpg" alt="Music_World" border="0">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a routerLink='/allSongs'>Songs</a>
-                </li>
-                <li>
-                    <a routerLink='/artist'>Artists</a>
-                </li>
-                <li>
-                    <a routerLink='/top10artists'>TOP 10 ARTISTS</a>
-                </li>
-                <li>
-                    <a routerLink='/top10songs'>TOP 10 SONGS</a>
-                </li>
-                <li>
-                    <a routerLink='/login' *ngIf="!user">Login</a>
-                    <a routerLink='/logout' *ngIf="user">Logout</a>
-                </li>
-                <li>
-                    <a routerLink='/register' *ngIf="!user">Register</a>
-                </li>
-                <span></span>
-                <li *ngIf="user">
-                    <p>hello {{user?.firstName}}</p>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- <img src='src/app/Content/MusicWorld.jpg' alt="bla"> -->
-<router-outlet></router-outlet>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse colored navbar-top" style="margin: 0px; padding: 0px">
+            <div class="navbar-header">
+                <img src="https://image.ibb.co/gnHAOa/Music_World.jpg" alt="Music_World" border="0">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a routerLink='/allSongs'>Songs</a>
+                    </li>
+                    <li>
+                        <a routerLink='/artist'>Artists</a>
+                    </li>
+                    <li>
+                        <a routerLink='/top10artists'>TOP 10 ARTISTS</a>
+                    </li>
+                    <li>
+                        <a routerLink='/top10songs'>TOP 10 SONGS</a>
+                    </li>
+                    <li>
+                        <a routerLink='/login' *ngIf="!user">Login</a>
+                        <a routerLink='/logout' *ngIf="user">Logout</a>
+                    </li>
+                    <li>
+                        <a routerLink='/register' *ngIf="!user">Register</a>
+                    </li>
+                    <span></span>
+                    <md-sidenav-container class="aside-container">
+                        <md-sidenav #sidenav class="aside-sidenav">
+                            {{user?.userName}}
+                        </md-sidenav>
+                        >>>>>>> 3fd597dddaca486c3fc425b90a76b8238d03500e
 
-<!-- <div layout="row" layout-align="center center">
-    <video width="500" height="400" controls>
-        <source src="./../books.mp4" type="video/mp4">
-    </video>
-</div> -->
+                        <div class="aside-sidenav-content">
+                            <button type="button" md-button (click)="sidenav.open()">
+                                <li *ngIf="user">
+                                    <p>Hello {{user?.firstName}}</p>
+                                </li>
+                        </button>
+                        </div>
+                    </md-sidenav-container>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <router-outlet></router-outlet>
+        <!-- <div class="push"></div> -->
+    </div>
+    <footer class="footer">
+        <h2>MusicWorld</h2>
+    </footer>
+</body>

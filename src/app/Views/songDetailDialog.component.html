@@ -3,26 +3,25 @@
         <h2 md-dialog-title>{{title}}</h2>
         <span></span>
         <md-dialog-actions>
-            <button md-icon-button md-dialog-close><md-icon>clear</md-icon></button> 
-        </md-dialog-actions> 
+            <button md-icon-button md-dialog-close><md-icon>clear</md-icon></button>
+        </md-dialog-actions>
     </md-toolbar>
-     <div layout-align="center center">
+    <div layout-align="center center">
         <div layout="row">
-             <div class="details-div" layout="column">
+            <div class="details-div" layout="column">
                 <h4>{{song.name}}</h4>
                 <h5 ng-show="song.album">{{song.album}} </h5>
                 <h6 class="sub-title">{{'by ' + song.artist.firstName + ' ' + song.artist.lastName}}</h6>
             </div>
             <div layout-padding ng-show="song.publisher || song.publicationYear">
-                {{"published" + (song.publisher ? " by " + song.publisher: " ") +
-                (song.publicationYear? " at " + song.publicationYear: "")}}
+                {{"published" + (song.publisher ? " by " + song.publisher: " ") + (song.publicationYear? " at " + song.publicationYear: "")}}
                 {{song.genere}}
-            </div>  
+            </div>
         </div>
     </div>
     <div class="song-words" layout="column" layout-align="center center">
-         <div>
+        <div>
             {{song.words}}
-        </div> 
+        </div>
     </div>
 </div>
