@@ -1,6 +1,7 @@
 .container, .navbar-header, .nav{
     display: flex;
-    flex: 1
+    flex: 1;
+    width: 1500px;
 }
 
 .navbar-nav>span {

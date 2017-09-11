@@ -3,16 +3,30 @@
         <h2>All Songs</h2>
         <md-divider></md-divider>
         {{action}}
+        <!-- <h4><i class="fa fa-angle-right"></i> Search for some songs!</h4>
+        <span>
+            <input type="text" class="form-control"  style="width: 171px; height: 34px; margin-left: 20px" ng-model="searchTerm" ng-change="requestItunesData(searchTerm)" placeholder="search term"/>
+        </span> -->
+
+        <hr>
+        <!-- <table ng-table="tableParams" show-filter="true" class="table ">
+            <tr ng-repeat="song in songs">
+                <td data-title="'Song name'" sortable="'song.name'" filter="{ 'song.name': 'text' }">{{song.name}}</td>
+                <td data-title="'Artist First Name'" sortable="'song.artist.firstName'" filter="{ 'artistFirstName': 'text' }"> {{song.artist.firstName}}</td>
+                <td data-title="'Artist First Name'" sortable="'song.artist.firstName'" filter="{ 'artistFirstName': 'text' }"> {{song.artist.firstName}}</td>
+                <md-icon (click)="songDetailDialog(song)">details</md-icon> 
+                <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon> 
+                <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon>
+            </tr>
+        </table> -->
         <md-list>
             <md-list-item *ngFor="let song of songs">
                 <p><b>{{ song.name }}</b>/{{ song.artist.firstName }} {{ song.artist.lastName }}</p> 
                 <!-- <div layout="row" layout-align="end center"> -->
-                <md-icon (click)="songDetailDialog(song)">details</md-icon> 
-                <md-icon (click)="songEditDialog(song)" *ngIf="user">edit</md-icon> 
-                <md-icon md-raised-button (click)="songDeleteDialog(song)" *ngIf="user">delete</md-icon> 
+                
                 <!-- </div> -->
             </md-list-item>
-        </md-list>
+        </md-list> 
     </md-card-content>
 </md-card>
 
