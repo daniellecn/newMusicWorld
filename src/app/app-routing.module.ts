@@ -15,7 +15,7 @@ import { Top10ArtistsComponent } from './Components/top10artists.component';
 import { Top10SongsComponent } from './Components/top10songs.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full', component: VideoComponent },
   { path: 'allSongs', component: SongsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'artist', component: ArtistComponent},
   { path: 'artistDetail', component: ArtistDetailComponent},
   { path: 'top10artists', component: Top10ArtistsComponent},
-  { path: 'top10songs', component: SongsComponent}
+  { path: 'top10songs', component: Top10SongsComponent}
 ];
 
 @NgModule({

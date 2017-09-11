@@ -7,6 +7,20 @@ import { Artist } from './../Modules/artist';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
+export const topArtists = gql`
+query topArtists{
+    artistQueries {
+      topArtists {
+        id
+        firstName
+        lastName
+        country
+        views
+      }
+    }
+  }
+`;
+
 @Injectable ()
 export class ArtistService{
     constructor(private apollo: Apollo) {}
@@ -37,10 +51,16 @@ export class ArtistService{
     }
 
     getTopArtists(): Observable<ApolloExecutionResult<{ artistQueries: { topArtists: Artist[] } }>> {
-        const topArtists = gql`
-        query topArtists{
-            artistQueries {
-              topArtists {
+        return this.apollo.watchQuery({
+            query: topArtists
+        })
+    }
+
+    getAllArtists(): Observable<ApolloExecutionResult<{ artistQueries: { allArtists: Artist[] } }>> {
+        const allArtists = gql`
+        query allArtists{
+        artistQueries {
+            allArtists {
                 id
                 firstName
                 lastName
@@ -52,7 +72,7 @@ export class ArtistService{
         `;
 
         return this.apollo.watchQuery({
-            query: topArtists
+            query: allArtists
         })
     }
 

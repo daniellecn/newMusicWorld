@@ -1,3 +1,4 @@
+import { SongService } from '../Services/song.service';
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
@@ -17,20 +18,42 @@ import { ArtistService } from './../Services/artist.service';
 export class SongAddEditDialogComponent {
     selectedSong: Song;
     artistsOptions: Artist[];
-    title: String;
+    isCreate: boolean;
+    title: string;
+
     constructor(public dialogRef: MdDialogRef<SongAddEditDialogComponent>,
         @Inject(MD_DIALOG_DATA) public data: any,
-        private artistService: ArtistService) {
+        private artistService: ArtistService, private songService: SongService) {
         this.selectedSong = data.selectedSong;
-        this.title = data.title;
-        artistService.getArtists().then(artists => this.artistsOptions = artists);
+        this.isCreate = data.isCreate;
+        this.title = this.isCreate ? 'ADD NEW SONG' : `EDIT ${this.selectedSong.name}`;
+
+        artistService.getAllArtists()
+            .subscribe(({ data }) => {
+                this.artistsOptions = data.artistQueries.allArtists;
+            })
     }
-    onYesClick(): void {
+    public save(): void {
+        if (this.isCreate) {
+            console.log('creating new song');
+            this.songService.createSong(this.selectedSong)
+                .subscribe(({ data }) => {
+                    console.log('new song created - id ' + data.songMutations.createSong.id);
+                    this.dialogRef.close();
+                })
+        } else {
+            console.log('updating existing song');
+            this.songService.updateSong(this.selectedSong)
+                .subscribe(({ data }) => {
+                    console.log('song updated - id ' + data.songMutations.updateSong.id);
+                    this.dialogRef.close();
+                })
+        }
     }
 
     artistControl: FormControl = new FormControl();
 
     displayNames(artistOption: Artist): string {
-        return artistOption ? (artistOption.firstName && ' ' && artistOption.lastName) : artistOption.firstName;
+        return artistOption ? (artistOption.firstName + ' ' + artistOption.lastName) : artistOption.firstName;
     }
 }

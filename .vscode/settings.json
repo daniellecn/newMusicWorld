@@ -10,7 +10,9 @@
         // "**/*.js": true,
         "**/*.js.map": true,
         "**/*.spec.ts": true,
-        ".history": true
+        ".history": true,
+        "**/*.history": true
     },
-    "typescript.referencesCodeLens.enabled": true
+    "typescript.referencesCodeLens.enabled": true,
+    "mocha.enabled": false
 }

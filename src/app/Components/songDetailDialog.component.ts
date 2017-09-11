@@ -14,12 +14,13 @@ export class SongDetailDialogComponent implements OnInit {
     title: string;
     song: Song;
 
-    constructor(@Inject(MD_DIALOG_DATA) public data: any) {
+    constructor(@Inject(MD_DIALOG_DATA) public data: any, private songService: SongService) {
         this.song = data.selectedSong;
      }
 
     ngOnInit(): void{
         this.title = 'Detail';
+        this.songService.songViewed(this.song).subscribe();
     }
 
     cancel(): void{

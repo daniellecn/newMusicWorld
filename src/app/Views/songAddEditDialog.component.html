@@ -7,23 +7,21 @@
 
 <md-card-content class="md-padding">
     <div>
-        <form class="form-inline" name="songForm">
+        <form class="form-inline" name="songForm" (ngSubmit)="save()">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" [(ngModel)]="selectedSong.name" name="name">
             </div>
             <div class="form-group">
-                <label>Artist</label>
-                <input type="text" class="form-control" mdInput [formControl]="artistControl" [mdAutocomplete]="auto">
-                <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayNames">
-                    <md-option *ngFor="let artistOption of artistsOptions" [value]="artistOption">
+                <md-select placeholder="Artist" [(ngModel)]="selectedSong.artist.id" name="artist">
+                    <md-option *ngFor="let artistOption of artistsOptions" [value]="artistOption.id" >
                         {{ artistOption.firstName }} {{ artistOption.lastName }}
                     </md-option>
-                </md-autocomplete>
+                </md-select>
             </div>
             <div class="form-group">
                 <label>Album</label>
-                <input type="text" class="form-control" [(ngModel)]="selectedSong.Album" name="album">
+                <input type="text" class="form-control" [(ngModel)]="selectedSong.album" name="album">
             </div>
             <div class="form-group">
                 <label>Publisher</label>
@@ -37,13 +35,11 @@
                 <label>Genere</label>
                 <input type="text" class="form-control" [(ngModel)]="selectedSong.genere" name="genere">
             </div>
-        </form>
-        <form class="form-inline" name="sondWordsForm">
             <div class="form-group">
                 <label>Song words</label>
                 <textarea [(ngModel)]="selectedSong.words" name="words" rows="10"></textarea>
             </div>
+            <button type="submit" class="btn btn-warning btn-lg">Save</button>
         </form>
-        <button type="submit" class="btn btn-warning btn-lg">Save</button>
     </div>
 </md-card-content>

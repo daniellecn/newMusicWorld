@@ -79,20 +79,25 @@ export class SongsComponent implements OnInit {
     }
 
     songEditDialog(song: Song): void {
-       if (song == null){
-           this.title = `ADD NEW SONG`
+        let isCreate = false;
+        if (song == null) {
             this.selectedSong = new Song();
-       }
-       else{
-           this.title = `EDIT `.concat(song.name);
-            this.selectedSong = song;
-       }
+            this.selectedSong.artist = new Artist();
+            isCreate = true;
+        }
+        else {
+            this.selectedSong = Object.assign({}, song, {
+                artist: Object.assign({}, song.artist)
+            });
+        }
 
         let dialogRef = this.dialog.open(SongAddEditDialogComponent, {
             height: '500px',
             width: '750px',
-            data: { selectedSong: this.selectedSong,
-                    title: this.title }
+            data: {
+                selectedSong: this.selectedSong,
+                isCreate
+            }
         });
 
         dialogRef.afterClosed().subscribe(result => {
