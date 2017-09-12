@@ -2,6 +2,7 @@
     <header>
         <nav class="navbar navbar-inverse colored navbar-top" style="margin: 0px; padding: 0px">
             <div class="navbar-header">
+                    
                 <img src="https://image.ibb.co/gnHAOa/Music_World.jpg" alt="Music_World" border="0">
                 <ul class="nav navbar-nav">
                     <li>
@@ -24,6 +25,7 @@
                         <a routerLink='/register' *ngIf="!user">Register</a>
                     </li>
                     <span></span>
+                    <canvas id="canvas" width="70" height="70" style="background-color:#000000"></canvas>
                     <md-sidenav-container class="aside-container">
                         <md-sidenav #sidenav class="aside-sidenav">
                             {{user?.userName}}
