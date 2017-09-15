@@ -1,0 +1,96 @@
+<header class='sticky-header'>
+    <div class='header-content'>
+        <section class='first-header-container'>
+            <h1>Ng2 Countries | By dormd</h1>
+
+            <div class='counters-and-shuffle-container'>
+                <div class='show-counters'>
+                    Show <span>{{ _viewCountriesKeys.length }}</span> 
+                    out of <span>{{ _countriesKeys.length }}</span>
+                </div>
+
+                <shuffle-button 
+                    *ngIf='_viewMode === _viewModeTypes.Cards'
+                    [count]='_shuffleCount' 
+                    (shuffleClick)='_onShuffleClick()'>
+                </shuffle-button>
+            </div>
+        </section>
+
+        <section class='main-operations-bar clearfix'>
+
+            <div class='mode-buttons-container'>
+                Feature:
+                
+
+                <div (click)='_onCardsModeClick()'>
+                    <span class="glyphicon glyphicon-th" 
+                          [class.active-option]='_viewMode === _viewModeTypes.Cards'
+                          title='Show countries cards'
+                          aria-hidden="true">
+                    </span>
+                </div>
+
+                <div (click)='_onMapModeClick()'>
+                    <span 
+                        class="glyphicon glyphicon-globe"
+                        [class.active-option]='_viewMode === _viewModeTypes.FlagsMap'
+                        title='Show Countries flags map'
+                        aria-hidden="true">
+                    </span>
+                </div>    
+            </div>
+
+            <div class='sort-buttons-container'
+                 *ngIf='_viewMode === _viewModeTypes.Cards'>
+
+                Sort:
+                <div (click)='_onSortByArea()'>
+                    <span 
+                        class="glyphicon glyphicon-globe" 
+                        [class.active-option]='_sortByMode === _sortModeTypes.Area'
+                        title='Sort by area'
+                        aria-hidden="true">
+                    </span>
+                </div>
+
+                <div (click)='_onSortByPopulation()'>
+                    <span
+                        class="glyphicon glyphicon-user" 
+                        [class.active-option]='_sortByMode === _sortModeTypes.Population'
+                        title='Sort by population'                   
+                        aria-hidden="true">
+                    </span>
+                </div>    
+            </div>
+
+            <div class='search-container'>
+                <countries-search
+                    (search)='_onSearchChange($event)'>
+                </countries-search>
+            </div>
+        </section>
+    </div>
+</header>
+
+<main class='main-content-container sticky-main'>    
+    
+    <div *ngIf='_viewMode === _viewModeTypes.Cards'
+         shuffle 
+         (shuffleCount)='_onShuffleCount($event)'>
+
+        <country-details 
+            *ngFor='let a2Country of _viewCountriesKeys; let i = index'
+            [data]='_countriesData[a2Country]'
+            [serialNum]='i + 1'
+            [isShrinkMode]='_isShuffleOn'
+            [isSerialNumShow]='_sortByMode !== _sortModeTypes.None'
+            [isAnthemExist]='_anthemsData.hasOwnProperty(a2Country)'>
+        </country-details>
+    </div>
+
+    <world-flags-map 
+        *ngIf='_viewMode === _viewModeTypes.FlagsMap'
+        [countriesKeys]='_viewCountriesKeys'>
+    </world-flags-map>    
+</main>

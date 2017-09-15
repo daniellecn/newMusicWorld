@@ -1,0 +1,7 @@
+input, input:focus {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+    font-size: 14px;
+}

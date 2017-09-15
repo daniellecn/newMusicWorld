@@ -1,0 +1,14 @@
+.world {
+    position: relative;
+    background: url('assets/images/countries-outlines-map.png');
+    background-position-y: 10px;
+    background-size: cover;
+}
+
+.country-flag-container {
+    position: absolute;
+}
+
+country-flag >>> .flag-icon-il {
+    z-index: 1;
+}

@@ -1,0 +1,18 @@
+<span *ngIf='alpha2 !== "XK" && alpha2 !== "NC"'
+      [ngClass]='_classes' 
+      (mouseenter)='_onOver($event)'
+      (click)='_onClick()'
+      [style.line-height.px]='height'
+      [style.height.px]='height'      
+      [style.width.px]='width'
+      [title]='alpha2 | a2ToCountry'>
+</span>
+
+<img *ngIf='alpha2 === "XK" || alpha2 === "NC"'
+     [src]='_alternativeImgSrc'
+     [height]='height'
+     [width]='width'
+     [title]='alpha2 | a2ToCountry'
+     (mouseenter)='_onOver($event)'
+     (click)='_onClick()'
+     class='flag'/>

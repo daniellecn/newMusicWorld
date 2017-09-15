@@ -1,0 +1,82 @@
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    background-color: #039BE5;
+    padding-top: 30px;
+    padding-bottom: 10px;         
+}
+
+.header-content {
+    padding: 0 30px;   
+}
+
+header h1 {
+    display: inline-block;
+    color: white; 
+    font-size: 30px;
+    font-weight: bold;
+    padding: 15px 0;   
+}
+
+.counters-and-shuffle-container {
+    float: right;
+    width: 350px; 
+    margin-top: 13px;   
+}
+
+shuffle-button {
+    float: right;
+}
+
+.show-counters {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.show-counters span {
+    font-weight: bold;
+}
+
+.sticky-header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    margin-top: -125px;        
+}
+
+.sticky-main {
+    margin-top: 90px;
+}
+
+.mode-buttons-container, .sort-buttons-container {
+    /*float: right;*/
+    display: inline-block;
+    font-size: 19px;
+    color: white;
+    margin-top: 7px;
+}
+
+.sort-buttons-container div, .mode-buttons-container div {
+    display: inline-block;
+    /*margin-right: 5px;*/
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.sort-buttons-container {
+    margin-left: 20px;
+}
+
+.active-option {
+    color: black;
+}
+
+.main-content-container {
+    padding: 35px 15px 15px 15px;
+}
+
+.search-container {
+    width: 350px;
+    float: right;
+
+    position: relative;
+}
